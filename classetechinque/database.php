@@ -1,9 +1,9 @@
 <?php
 // Configuration de la connexion à la base de données
-$host = 'localhost';
-$dbname = 'chatbot_bdv1.4';
-$username = 'root';
-$password = '';
+$host = ''; // Adresse du serveur de base de données
+$dbname = ''; // Nom de la base de données à utiliser
+$username = ''; // Nom d'utilisateur pour la connexion à la base de données
+$password = ''; // Mot de passe pour la connexion à la base de données
 
 try {
     // Création d'une nouvelle instance PDO pour se connecter à la base de données
