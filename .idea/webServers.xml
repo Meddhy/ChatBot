@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="WebServers">
+    <option name="servers">
+      <webServer id="3dd6ab3e-9a6e-4baa-b473-8489ae39fd59" name="chatbot" url="http://localhost">
+        <fileTransfer mountedRoot="C:\wamp64\www\Chatbot" accessType="MOUNT" port="0" />
+      </webServer>
+    </option>
+  </component>
+</project>

@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestion des Questions & Réponses</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <link href="../css/style1.css" rel="stylesheet">
+    <!-- Ajout d'un favicon -->
+    <!--<link rel="icon" href="../favicon.webp">-->
+    <!-- Ajout de jQuery UI pour les animations -->
+    <link href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css" rel="stylesheet">
+</head>
+<body>
+<div class="container">
+    <div class="sidebar">
+        <div class="sidebar-header">
+            <h2>Questions & Réponses</h2>
+            <button class="add-main-question" type="button" onclick="showAddModal(0)">
+                <i class="fas fa-plus"></i>
+                Nouvelle Question Principale
+            </button>
+        </div>
+        <div class="search-box">
+            <i class="fas fa-search"></i>
+            <input type="text" id="searchInput" placeholder="Rechercher une question..." autocomplete="off">
+            <button type="button" class="clear-search" id="clearSearch">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+        <div id="tree-menu" class="tree-menu">
+            <!-- Indicateur de chargement -->
+            <div class="loading-indicator">
+                <i class="fas fa-spinner fa-spin"></i> Chargement...
+            </div>
+        </div>
+    </div>
+
+    <div class="main-content">
+        <div class="content-header">
+            <h2>Gestion des Questions & Réponses</h2>
+            <div class="header-actions">
+                <button class="btn btn-add" type="button" onclick="showAddModal(0)">
+                    <i class="fas fa-plus"></i>
+                    Ajouter une Question
+                </button>
+            </div>
+        </div>
+        <div id="current-item-details">
+            <!-- Message par défaut -->
+            <div class="default-message">
+                <i class="fas fa-info-circle"></i>
+                <p>Sélectionnez une question pour voir les détails</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal d'édition -->
+<div id="editModal" class="modal">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h2>Modifier la Question/Réponse</h2>
+            <span class="close" data-modal="editModal">&times;</span>
+        </div>
+        <form id="editForm" novalidate>
+            <input type="hidden" id="editId" name="id">
+            <div class="form-group">
+                <label for="editQuestion">Question:</label>
+                <input type="text" id="editQuestion" name="question" required
+                       minlength="3" maxlength="255">
+                <div class="form-feedback"></div>
+            </div>
+            <div class="form-group">
+                <label for="editCategorie">Catégorie Parent:</label>
+                <select id="editCategorie" name="categorie">
+                    <option value="0">Question principale</option>
+                </select>
+                <div class="form-feedback"></div>
+            </div>
+            <div class="form-group">
+                <label for="editReponse">Réponse:</label>
+                <textarea id="editReponse" name="reponse" rows="4" required
+                          minlength="10" maxlength="1000"></textarea>
+                <div class="form-feedback"></div>
+            </div>
+            <div class="form-actions">
+                <button type="button" class="btn btn-cancel" data-modal="editModal">Annuler</button>
+                <button type="submit" class="btn btn-edit">
+                    <i class="fas fa-save"></i> Enregistrer
+                </button>
+            </div>
+        </form>
+    </div>
+</div>
+
+<!-- Modal d'ajout -->
+<div id="addModal" class="modal">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h2>Ajouter une Question/Réponse</h2>
+            <span class="close" data-modal="addModal">&times;</span>
+        </div>
+        <form id="addForm" novalidate>
+            <div class="form-group">
+                <label for="question">Question:</label>
+                <input type="text" id="question" name="question" required
+                       minlength="3" maxlength="255">
+                <div class="form-feedback"></div>
+            </div>
+            <div class="form-group">
+                <label for="categorie">Catégorie Parent:</label>
+                <select id="categorie" name="categorie">
+                    <option value="0">Question principale</option>
+                </select>
+                <div class="form-feedback"></div>
+            </div>
+            <div class="form-group">
+                <label for="reponse">Réponse:</label>
+                <textarea id="reponse" name="reponse" rows="3" required
+                          minlength="10" maxlength="1000"></textarea>
+                <div class="form-feedback"></div>
+            </div>
+            <div class="form-actions">
+                <button type="button" class="btn btn-cancel" data-modal="addModal">Annuler</button>
+                <button type="submit" class="btn btn-add">
+                    <i class="fas fa-plus"></i> Ajouter
+                </button>
+            </div>
+        </form>
+    </div>
+</div>
+
+<!-- Bouton Chatbot -->
+<button class="chatbot-button" type="button" onclick="openChatbot()">
+    <i class="fas fa-robot"></i>
+    <span class="tooltip">Ouvrir le chatbot</span>
+</button>
+
+<!-- Notification -->
+<div id="notification" class="notification" style="display: none;"></div>
+
+<!-- Scripts -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
+
+
+<script src="index.js"></script>
+</body>
+</html>

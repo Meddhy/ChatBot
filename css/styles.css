@@ -1,0 +1,176 @@
+/* Variables pour les couleurs */
+:root {
+    --primary-color: #2196F3;
+    --secondary-color: #E3F2FD;
+    --text-color: #333;
+    --light-grey: #f5f5f5;
+    --border-radius: 12px;
+    --hover-color: #1976D2; /* Couleur de survol */
+    --active-color: #1565C0; /* Couleur active */
+}
+
+/* Styles généraux */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+/* Conteneur principal */
+#chat-container {
+    width: 380px;
+    height: 600px;
+    background: white;
+    border-radius: var(--border-radius);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+/* En-tête */
+#chat-header {
+    background: var(--primary-color);
+    color: white;
+    padding: 20px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+#chat-header h2 {
+    margin: 0;
+    font-size: 1.2rem;
+    font-weight: 500;
+}
+
+#chat-header i {
+    font-size: 1.4rem;
+}
+
+.status-indicator {
+    margin-left: auto;
+    font-size: 0.8rem;
+    background: rgba(255, 255, 255, 0.2);
+    padding: 4px 12px;
+    border-radius: 12px;
+}
+
+/* Zone des messages */
+#chat-messages {
+    flex: 1;
+    padding: 20px;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    background: #fafafa;
+}
+
+/* Messages */
+.message-bot, .message-utilisateur {
+    padding: 12px 16px;
+    border-radius: 12px;
+    max-width: 80%;
+    line-height: 1.4;
+    animation: fadeIn 0.3s ease-in-out;
+}
+
+.message-bot {
+    background: white;
+    border: 1px solid #e0e0e0;
+    align-self: flex-start;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.message-utilisateur {
+    background: var(--primary-color);
+    color: white;
+    align-self: flex-end;
+}
+
+/* Conteneur des options */
+#options-container {
+    padding: 16px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    background: white;
+    border-top: 1px solid #eee;
+}
+
+/* Boutons d'options */
+.bouton-option {
+    background: var(--secondary-color);
+    color: var(--primary-color);
+    border: none;
+    border-radius: 20px;
+    padding: 8px 16px;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    font-weight: 500;
+}
+
+.bouton-option:hover {
+    background: var(--hover-color);
+    color: white;
+    transform: translateY(-1px);
+}
+
+.bouton-option:active {
+    background: var(--active-color);
+}
+
+/* Indicateur de frappe */
+.typing-indicator {
+    padding: 12px 16px;
+    display: flex;
+    gap: 4px;
+}
+
+.typing-indicator span {
+    width: 8px;
+    height: 8px;
+    background: #90A4AE;
+    border-radius: 50%;
+    animation: bounce 1.4s infinite ease-in-out;
+}
+
+.typing-indicator span:nth-child(1) { animation-delay: -0.32s; }
+.typing-indicator span:nth-child(2) { animation-delay: -0.16s; }
+
+/* Animations */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes bounce {
+    0%, 80%, 100% { transform: scale(0); }
+    40% { transform: scale(1); }
+}
+
+/* Scrollbar personnalisée */
+::-webkit-scrollbar {
+    width: 6px;
+}
+
+::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #c1c1c1;
+    border-radius: 3px;
+}
+
+/* Utilitaires */
+.hidden {
+    display: none;
+}
